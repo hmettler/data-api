@@ -4,12 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "set NODE_ENV=test&&jest --testTimeout=10000 --silent",
+    "test-ori": "echo \"Error: no test specified\" && exit 1",
     "dev": "set DATABASE_URL=postgres://user:password@192.168.1.129:5432/db&&nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/nodes_modules/"
+    ]
+  },
   "dependencies": {
     "compression": "^1.7.4",
     "express": "^4.17.1",
@@ -19,6 +26,9 @@
     "sequelize": "^6.5.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "sqlite3": "^5.0.2",
+    "supertest": "^6.1.3"
   }
 }
