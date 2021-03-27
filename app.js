@@ -34,7 +34,7 @@ const sequelize = nodeEnv === "test" ?
         }
         */
     }) :
-    new Sequelize(user, password, database, {
+    new Sequelize(database, user, password, {
         dialect: "postgres",
         host: host,
     });
