@@ -8,9 +8,10 @@ const crypto = require("crypto");
 
 
 // Constants
+const nodeEnv = process.env.NODE_ENV;
+
 const HMAC_KEY =process.env.HMAC_KEY || "cupcakes";
 const API_KEY = process.env.API_KEY || "12345";
-const nodeEnv = process.env.NODE_ENV;
 
 const dbSocketPath = process.env.DB_SOCKET_PATH || '/cloudsql';
 
@@ -19,9 +20,6 @@ const password = process.env.DB_PASS;
 const database = process.env.DB_NAME;
 const host = `${dbSocketPath}/${process.env.CLOUD_SQL_CONNECTION_NAME}`;
 
-console.log("user: ", user, " password: ", password, " database: ", database, " host: ", host)
-
-// Global Variables
 const sequelize = nodeEnv === "test" ?
     new Sequelize("sqlite::memory:") :
     nodeEnv === "dev" ?
@@ -41,8 +39,7 @@ const sequelize = nodeEnv === "test" ?
         host: host,
     });
 
-
-const SensorData = sequelize.define("sendorData", {
+const SensorData = sequelize.define("sensorData", {
     serial: {
         type: DataTypes.STRING,
         allowNull: false
