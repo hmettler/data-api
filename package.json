@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "set NODE_ENV=test&&jest --testTimeout=10000 --silent",
-    "test-ori": "echo \"Error: no test specified\" && exit 1",
-    "dev": "set DATABASE_URL=postgres://user:password@192.168.1.129:5432/db&&nodemon index.js"
+    "dev": "set NODE_ENV=dev&&set DATABASE_URL=postgres://user:password@192.168.1.129:5432/db&&nodemon index.js"
   },
   "keywords": [],
   "author": "",
